@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "linked_lists.h"
+#include "linked_list.h"
 #ifndef LINKED_LISTS_C
 #define LINKED_LISTS_C
 
