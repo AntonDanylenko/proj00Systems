@@ -25,8 +25,12 @@ int main(){
   temp2->next = NULL;
 
   print_node(temp);
-  printf("\n\n");
+  printf("\n");
   print_list(temp);
 
+  print_node(temp);
+  find_node_list(temp, "artist name2", "song name2");
+  printf("\n");
 
+  print_list(insert_front(temp, "artist0000", "song0000"));
 }

@@ -12,31 +12,35 @@ void print_list(struct song_node *start){
 }
 
 void print_node(struct song_node *node){
-  printf("%s : %s", node->artist, node->name);
+  printf("%s : %s\n", node->artist, node->name);
 }
 
-struct song_node * find_node(struct song_node *start, char *song_artist, char *song_name){
+struct song_node * find_node_list(struct song_node *start, char *song_artist, char *song_name){
   printf("looking for [%s: %s]\n", song_artist, song_name);
   while(start){
-    if(!strcmp(start->artist,song_artist) && !strcmp(start->name,song_name)){
+    //printf("in while loop\n");
+    if(!(strcmp(start->artist,song_artist) || strcmp(start->name,song_name))){
       printf("node found! ");
       print_node(start);
+      printf("\n");
       return start;
     }
     start = start->next;
   }
-  printf("node not found");
+  printf("node not found\n");
+  return NULL;
 }
 
-/*struct song_node * insert_front(struct node *start, int num){
-  struct node *new;
-  new = malloc(sizeof(num) + sizeof(start));
-  new->i = num;
+struct song_node * insert_front(struct song_node *start, char *artist, char *name){
+  struct song_node *new;
+  new = malloc(sizeof(artist) + sizeof(name) + sizeof(struct song_name *));
+  strcpy(new->artist, artist);
+  strcpy(new->name, name);
   new->next = start;
   return new;
 }
 
-struct node * free_list(struct node *start){
+/*struct node * free_list(struct node *start){
   while (start){
     struct node *temp = start;
     start = start->next;
