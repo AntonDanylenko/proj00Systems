@@ -5,7 +5,7 @@
 
 void print_list(struct song_node *start){
   while (start){
-    printf("%s : %s |", start->artist, start->name);
+    printf("%s : %s | ", start->artist, start->name);
     start = start->next;
   }
   printf("\n");
@@ -27,7 +27,7 @@ struct song_node * find_node(struct song_node *start, char *song_artist, char *s
   }
   printf("node not found");
 }
-  
+
 /*struct song_node * insert_front(struct node *start, int num){
   struct node *new;
   new = malloc(sizeof(num) + sizeof(start));

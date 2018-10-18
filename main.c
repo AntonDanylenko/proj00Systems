@@ -6,10 +6,27 @@
 
 int main(){
   struct song_node *temp;
-  temp = malloc(sizeof("artist name") + sizeof("song name") + sizeof(struct song_node *));
+  temp = malloc(sizeof("artist name") + sizeof("song name") + sizeof(struct song_name *));
+  struct song_node *temp1;
+  temp1 = malloc(sizeof("artist name1") + sizeof("song name1") + sizeof(struct song_name *));
+  struct song_node *temp2;
+  temp2 = malloc(sizeof("artist name2") + sizeof("song name2") + sizeof(struct song_name *));
+
   strcpy(temp->artist, "artist name");
   strcpy(temp->name, "song name");
-  temp->next = NULL;
+  temp->next = temp1;
 
+  strcpy(temp1->artist, "artist name1");
+  strcpy(temp1->name, "song name1");
+  temp1->next = temp2;
+
+  strcpy(temp2->artist, "artist name2");
+  strcpy(temp2->name, "song name2");
+  temp2->next = NULL;
+
+  print_node(temp);
+  printf("\n\n");
   print_list(temp);
+
+
 }
