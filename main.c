@@ -32,5 +32,10 @@ int main(){
   find_node_list(temp, "artist name2", "song name2");
   printf("\n");
 
-  print_list(insert_front(temp, "artist0000", "song0000"));
+  struct song_node *temp0;
+  temp0 = malloc(sizeof("artist0000") + sizeof("song0000") + sizeof(struct song_name *));
+  temp0 = insert_front(temp, "artist0000", "song0000");
+  print_list(temp0);
+
+  print_list(free_list(temp0));
 }

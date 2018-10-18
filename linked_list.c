@@ -40,12 +40,16 @@ struct song_node * insert_front(struct song_node *start, char *artist, char *nam
   return new;
 }
 
-/*struct node * free_list(struct node *start){
+struct song_node * free_list(struct song_node *start){
+  printf("freeing list\n");
   while (start){
-    struct node *temp = start;
+    struct song_node *temp;
+    temp = malloc(sizeof(start->artist) + sizeof(start->name) + sizeof(struct song_name *));
+    temp = start;
     start = start->next;
     free(temp);
     temp = NULL;
   }
+  printf("list freed\n");
   return start;
-  }*/
+  }
