@@ -1,13 +1,14 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
-void print_library
-void print_letter
-int find
-int find_artist
-void remove_song
-void clear_library
-void print_artist
-void shuffle
+void add_song(struct song_node **, char *, char *);
+void print_library(struct song_node **);
+void print_letter(struct song_node **, char);
+struct song_node * find(struct song_node **, char *, char *);
+struct song_node * find_artist(struct song_node **, char *);
+void remove_song(struct song_node **, char *, char *);
+void clear_library(struct song_node **);
+void print_artist(struct song_node **, char *);
+void shuffle(struct song_node **);
 
 #endif

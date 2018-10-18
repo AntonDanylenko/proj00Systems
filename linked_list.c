@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "linked_list.h"
-#ifndef LINKED_LISTS_C
-#define LINKED_LISTS_C
 
 void print_list(struct song_node *start){
   while (start){
@@ -46,5 +45,3 @@ struct node * free_list(struct node *start){
   }
   return start;
   }*/
-
-#endif
