@@ -3,7 +3,7 @@
 
 struct song_node * table[27];
 
-int find_index(char);
+int find_index(char *);
 
 void add_song( char *, char *);
 

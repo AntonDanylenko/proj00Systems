@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "linked_list.h"
+#include "library.h"
 
 #ifndef LIBRARY_C
 #define LIBRARY_C
@@ -8,7 +10,7 @@
 int find_index(char *artist){
   int index = 0;
   if (artist[0] - 'A' > 25){
-    index = 26
+    index = 26;
   }
   return artist[0] - 'A';
 }
@@ -37,8 +39,8 @@ void print_library_letter(int index){
 }
 
 void print_letter(char a){
-  printf("%c:", 1);
-  print_list(table[1-'a']);
+  printf("%c:", (char)a);
+  print_list(table[a-'a']);
 }
 
 void find(char *artist, char *song){
@@ -69,7 +71,7 @@ void find_artist(char *artist){
 void remove_song(char *artist, char *song){
   int index = artist[0] - 'a';
   if (index<0 || index>=27){
-    index  26;
+    index = 26;
   }
   struct song_node *node = table[index];
   remove_node(node,artist,song);
@@ -96,7 +98,7 @@ void shuffle(struct song_node **library){
   while (a){
     int b = rand() % 27;
     if (get_random(table[b])){
-      print_node(get_random(table[b])));
+      print_node(get_random(table[b]));
       printf("\n");
       a--;
     }

@@ -134,7 +134,7 @@ struct song_node * get_random(struct song_node *node) {
 struct song_node * remove_node(struct song_node *start, char *song_artist, char *song_name) {
     struct song_node *one = start;
     struct song_node *two;
-    two = malloc(sizeof(start->artist) + sizeof(start->name) + sizeof(struct song_name *))
+    two = malloc(sizeof(start->artist) + sizeof(start->name) + sizeof(struct song_name *));
     if (one) {
         while(!strcmp(start->artist,song_artist) || !strcmp(start->name,song_name)){
             two = one;

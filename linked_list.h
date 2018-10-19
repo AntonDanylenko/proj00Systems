@@ -12,7 +12,7 @@ struct song_node {
 //helper
 void set_node(struct song_node *, char *, char *, struct song_node *);
 //helper
-void song_node * find_first(struct song_node *, char*);
+struct song_node * find_first(struct song_node *, char*);
 
 struct song_node * insert_front(char *, char *, struct song_node *);
 

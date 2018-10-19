@@ -73,7 +73,7 @@ int main(){
     printf("=~=~=~=[ remove_node test ]=~=~=~=\n");
 
     printf("Removing [Imagine Dragons : Believer]...\n\n");
-    remove_node(node6, node3);
+    remove_node(node6, "Imagine Dragons", "Believer");
 
     printf("Updated list:\n");
     print_list(node6);
@@ -139,7 +139,7 @@ int main(){
   */
 
   printf("==========================================\n");
-  printf"\nTESTING MUSIC LIBRARY FUNCTIONS\n");
+  printf("\nTESTING MUSIC LIBRARY FUNCTIONS\n");
   printf("==========================================\n");
   printf("====[ add_song test ]====\n");
 
