@@ -29,13 +29,37 @@ int main(){
   print_list(temp);
 
   print_node(temp);
-  find_node_list(temp, "artist name2", "song name2");
+  list_find_node(temp, "artist name2", "song name2");
   printf("\n");
 
-  struct song_node *temp0;
-  temp0 = malloc(sizeof("artist0000") + sizeof("song0000") + sizeof(struct song_name *));
-  temp0 = insert_front(temp, "artist0000", "song0000");
-  print_list(temp0);
+  struct song_node *temp01;
+  temp01 = malloc(sizeof("Justin Bieber") + sizeof("Baby") + sizeof(struct song_name *));
+  strcpy(temp01->artist, "Justin Bieber");
+  strcpy(temp01->name, "Baby");
+  temp01->next = NULL;
 
-  print_list(free_list(temp0));
+  struct song_node *temp02;
+  temp02 = malloc(sizeof("Kim Kardashian") + sizeof("Love") + sizeof(struct song_name *));
+  strcpy(temp02->artist, "Kim Kardashian");
+  strcpy(temp02->name, "Love");
+  temp02->next = NULL;
+
+
+  printf("\n\n\n");
+  print_node(temp01);
+  print_node(temp02);
+  insert_front(temp01,temp02);
+  print_list(temp01);
+  print_list(temp02);
+
+  /*
+  struct song_node *temp02;
+  temp01 = malloc(sizeof(struct song_name *) + sizeof(struct song_name *));
+  struct song_node *temp01 = {"Justin Bieber", "Baby", 0};
+  struct song_node *temp02 = {"Kim Kardash", "Love", 0};
+  temp01 = insert_front(temp01, temp02);
+  print_list(temp01);
+  */
+
+  print_list(free_list(temp01));
 }
