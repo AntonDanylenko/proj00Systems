@@ -39,53 +39,56 @@ int main(){
     printf("Adding [Ariana Grande : Side to Side] to the front...\n\n");
 
     printf("Updated List:\n");
-    print_list(insert_front("Ariana Grande", "Side to Side", node6));
+    struct song_node *node7;
+    node7 = malloc(sizeof("Ariana Grande") + sizeof("Side to Side") + sizeof(struct song_name *));
+    node7 = insert_front("Ariana Grande", "Side to Side", node6);
+    print_list(node7);
 
     printf("==========================================\n");
     printf("=~=~=~=[ insert_in_order test ]=~=~=~=\n");
     printf("Adding [Flo Rida : My House] into proper space...\n\n");
 
     printf("Updated list:\n");
-    print_list(insert_in_order(node6, "Flo Rida", "My House"));
+    print_list(insert_in_order(node7, "Flo Rida", "My House"));
 
     printf("==========================================\n");
     printf("=~=~=~=[ list_find_node test ]=~=~=~=\n");
-    list_find_node(node6, "Ed Sheeran", "Galway Girl");
-    list_find_node(node6, "Charlie Puth", "Attention");
+    list_find_node(node7, "Ed Sheeran", "Galway Girl");
+    list_find_node(node7, "Charlie Puth", "Attention");
 
     printf("==========================================\n");
     printf("=~=~=~=[ list_find_artist test ]=~=~=~=\n");
 
     printf("Searching for Justin Bieber...\n");
-    list_find_artist(node6, "Justin Bieber");
+    list_find_artist(node7, "Justin Bieber");
 
     printf("==========================================\n");
     printf("=~=~=~=[ get_random test ]=~=~=~=\n");
 
     printf("Getting random song... ");
-    print_node(get_random(node6));
+    print_node(get_random(node7));
     printf("Getting random song... ");
-    print_node(get_random(node6));
+    print_node(get_random(node7));
     printf("Getting random song... ");
-    print_node(get_random(node6));
+    print_node(get_random(node7));
 
     printf("==========================================\n");
     printf("=~=~=~=[ remove_node test ]=~=~=~=\n");
 
     printf("Removing [Imagine Dragons : Believer]...\n\n");
-    remove_node(node6, "Imagine Dragons", "Believer");
+    remove_node(node7, "Imagine Dragons", "Believer");
 
     printf("Updated list:\n");
-    print_list(node6);
+    print_list(node7);
 
     printf("==========================================\n");
     printf("=~=~=~=[ free_list test ]=~=~=~=\n");
 
     printf("Freeing list...\n\n");
-    free_list(node6);
+    free_list(node7);
 
     printf("Updated list:\n");
-    print_list(node6);
+    print_list(node7);
 
     /*
   struct song_node *temp;
@@ -153,6 +156,7 @@ int main(){
   add_song("Sam Hunt","Body Like a Back Road");
   add_song("Calvin Harris","Slide");
   add_song("Kendrick Lamar","Humble");
+  add_song("Anton D", "Cool Song");
 
   print_library();
 

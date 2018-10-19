@@ -16,13 +16,13 @@ int find_index(char *artist){
 }
 
 void add_song(char *artist, char *song){
-  int index = artist[0] - 'a';
+  int index = artist[0] - 'A';
   if (index<0 || index>=27){
     index = 26;
   }
   struct song_node *node = table[index];
-  table[index] = insert_in_order(node, artist, song);
   table[index] = malloc(sizeof(struct song_node *));
+  table[index] = insert_in_order(node, artist, song);
 }
 
 void print_library(){
@@ -40,7 +40,7 @@ void print_library_letter(int index){
 
 void print_letter(char a){
   printf("%c:", (char)a);
-  print_list(table[a-'a']);
+  print_list(table[a-'A']);
 }
 
 void find(char *artist, char *song){

@@ -29,14 +29,14 @@ struct song_node * find_first(struct song_node *start, char* artist){
 }
 //helper function
 int song_cmp(struct song_node *first, struct song_node *second){
-	int name_cmp = strcmp(first->name, second->name);
-	int artist_cmp = strcmp(first->artist, second->artist);
-	if (artist_cmp != 0){
-		return (int)(artist_cmp < 0);
-	}
-    else {
-    	return (int)(name_cmp < 0);
-    }
+  int name_cmp = strcmp(first->name, second->name);
+  int artist_cmp = strcmp(first->artist, second->artist);
+  if (artist_cmp){
+    return artist_cmp;
+  }
+  else {
+    return name_cmp;
+  }
 }
 
 struct song_node *insert_in_order(struct song_node *node, char *artist, char *name) {
@@ -48,18 +48,16 @@ struct song_node *insert_in_order(struct song_node *node, char *artist, char *na
   if(node == NULL){
     return new;
   }
-  if (song_cmp(new,node)<=0){
+  if (song_cmp(new,node)<0){
     new->next = node;
     return new;
   }
   struct song_node *previous = node;
   struct song_node *current = node->next;
-  while (current!=NULL){
+  while (current){
     if (song_cmp(new,current)<=0){
-      if (!song_cmp(new,current)){
-        new->next = current;
-        previous->next = new;
-      }
+      new->next = current;
+      previous->next = new;
       return node;
     }
     previous = current;
@@ -70,7 +68,6 @@ struct song_node *insert_in_order(struct song_node *node, char *artist, char *na
 }
 
 void print_list(struct song_node *start){
-  printf("| ");
   while (start) {
     printf("%s : %s | ", start->artist, start->name);
     start = start->next;
