@@ -5,66 +5,102 @@
 #ifndef LIBRARY_C
 #define LIBRARY_C
 
-int find_index(char letter){
-  if ((int)letter>0 && (int)letter<=26){
-    return (int)(letter) - 1;
+int find_index(char *artist){
+  int index = 0;
+  if (artist[0] - 'A' > 25){
+    index = 26
+  }
+  return artist[0] - 'A';
+}
+
+void add_song(char *artist, char *song){
+  int index = artist[0] - 'a';
+  if (index<0 || index>=27){
+    index = 26;
+  }
+  struct song_node *node = table[index];
+  table[index] = insert_in_order(node, artist, song);
+  table[index] = malloc(sizeof(struct song_node *));
+}
+
+void print_library(){
+  for (int i=0; i<27; i++){
+    print_library_letter(i);
+  }
+}
+
+void print_library_letter(int index){
+  if (table[index]){
+    printf("%c \n", 'A' + index);
+    print_list(table[index]);
+  }
+}
+
+void print_letter(char a){
+  printf("%c:", 1);
+  print_list(table[1-'a']);
+}
+
+void find(char *artist, char *song){
+  int check = find_index(artist);
+  if (list_find_node(table[check],song,artist)){
+    printf("Song found! ");
+    print_node(list_find_node(table[check],song,artist));
+    printf("\n");
   }
   else{
-    return 26;
+    printf("Song not found! \n");
   }
 }
 
-void add_song(struct song_node **library, char *artist_name, char *song_name){
-  int index = find_index(artist_name[0]);
-  insert_in_order(library[index], artist_name, song_name);
-}
-
-void print_library(struct song_node **library){
-  for(int x=0; x<27; x++){
-    printf("%c list\n", (char)x);
-    print_list(library[x]);
+void find_artist(char *artist){
+  int check = find_index(artist);
+  struct song_node *start = find_first(table[check],artist);
+  if (start){
+    printf("Artist found! ");
+    print_list(start);
+    printf("\n");
+  }
+  else {
+    printf("Artist not found!\n");
   }
 }
 
-void print_letter(struct song_node **library, char letter){
-  printf("%c list\n", letter);
-  int index = find_index(letter);
-  print_list(library[index]);
+void remove_song(char *artist, char *song){
+  int index = artist[0] - 'a';
+  if (index<0 || index>=27){
+    index  26;
+  }
+  struct song_node *node = table[index];
+  remove_node(node,artist,song);
 }
 
-struct song_node * find(struct song_node **library, char *artist_name, char *song_name){
-  int index = find_index(artist_name[0]);
-  return list_find_node(library[index], artist_name, song_name);
-}
-
-struct song_node * find_artist(struct song_node **library, char *artist_name){
-  int index = find_index(artist_name[0]);
-  return list_find_artist(library[index], artist_name);
-}
-
-void remove_song(struct song_node **library, char *artist_name, char *song_name){
-  int index = find_index(artist_name[0]);
-  remove_node(library[index], artist_name, song_name);
-}
-
-void clear_library(struct song_node **library){
+void clear_library(){
   for (int x=0; x<27; x++){
-    free_list(library[x]);
+    table[x] = free_list(table[x]);
   }
 }
 
-void print_artist(struct song_node **library, char *artist_name){
-  int index = find_index(artist_name[0]);
-  print_list(list_find_artist(library[index], artist_name));
+void print_artist(char *artist){
+  struct song_node *node = list_find_artist(node, artist);
+  while (node){
+    if (!strcmp(node->artist, artist)){
+      print_list(node);
+    }
+  }
+  printf("\n");
 }
 
 void shuffle(struct song_node **library){
-  int index0 = ( rand() % 27 );
-  get_random(library[index0]);
-  int index1 = ( rand() % 27 );
-  get_random(library[index1]);
-  int index2 = ( rand() % 27 );
-  get_random(library[index2]);
+  int a = 0;
+  while (a){
+    int b = rand() % 27;
+    if (get_random(table[b])){
+      print_node(get_random(table[b])));
+      printf("\n");
+      a--;
+    }
+  }
 }
 
 #endif

@@ -137,4 +137,78 @@ int main(){
 
   print_list(free_list(temp01));
   */
+
+  printf("==========================================\n");
+  printf"\nTESTING MUSIC LIBRARY FUNCTIONS\n");
+  printf("==========================================\n");
+  printf("====[ add_song test ]====\n");
+
+  add_song("Nial Horan", "Slow Hands");
+  add_song("Ariana Grande","Into You");
+  add_song("Ed Sheeran","Galway Girl");
+  add_song("Martin Garrix","There for You");
+  add_song("Halsey","Now or Never");
+  add_song("Clean Bandit","Symphony");
+  add_song("Rita Ora","Your Song");
+  add_song("Sam Hunt","Body Like a Back Road");
+  add_song("Calvin Harris","Slide");
+  add_song("Kendrick Lamar","Humble");
+
+  print_library();
+
+  printf("==========================================\n");
+  printf("====[ print_letter test ]====\n");
+
+  print_letter('S');
+
+  print_letter('N');
+
+  print_letter("H");
+
+  printf("==========================================\n");
+  printf("====[ print_artist test ]====\n");
+
+  print_artist("Calvin Harris");
+
+  print_artist("Rita Ora");
+
+  print_artist("Halsey");
+
+  printf("==========================================\n");
+  printf("====[ print_library test ]====\n");
+
+  print_library();
+
+  printf("==========================================\n");
+  printf("====[ find test ]====\n");
+
+  find("Ed Sheeran","Galway Girl");
+
+  find("The Jackson Brothers", "ABC");
+
+  printf("==========================================\n");
+  printf("====[ find_artist test ]====\n");
+
+  find_artist("Martin Garris");
+
+  find_artist("Lebron James");
+
+  printf("==========================================\n");
+  printf("====[ shuffle test ]====\n");
+
+  shuffle();
+  shuffle();
+  shuffle();
+
+  printf("==========================================\n");
+  printf("====[ remove_song test ]====\n");
+
+  remove_song("Kendrick Lamar", "Humble");
+
+  remove_song("Nial Horan","Slow Hands");
+
+  printf("==========================================\n");
+  printf("====[ clear_library test ]====\n");
+
+  clear_library();
 }
