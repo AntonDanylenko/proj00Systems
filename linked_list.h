@@ -9,9 +9,12 @@ struct song_node {
 
 //struct song_node * table[27];
 
-struct song_node * insert_front(struct song_node *, struct song_node *);
+//helper
+void set_node(struct song_node *, char *, char *, struct song_node *);
 
-struct song_node * insert_in_order(struct song_node *, struct song_node *);
+struct song_node * insert_front(char *, char *, struct song_node *);
+
+struct song_node * insert_in_order(struct song_node *, char *, char *);
 
 void print_list(struct song_node *);
 

@@ -5,6 +5,89 @@
 #include "library.h"
 
 int main(){
+    printf("\nTESTING LINKED LIST FUNCTIONS\n");
+    printf("==========================================\n");
+    struct song_node *node1;
+    node1 = malloc(sizeof("The Chainsmokers") + sizeof("Closer") + sizeof(struct song_name *));
+    set_node(node1, "The Chainsmokers", "Closer", NULL);
+
+    struct song_node *node2;
+    node2 = malloc(sizeof("Justin Bieber") + sizeof("baby") + sizeof(struct song_name *));
+    set_node(node2, "Justin Bieber", "Baby", node1);
+
+    struct song_node *node3;
+    node3 = malloc(sizeof("Imagine Dragons") + sizeof("Believer") + sizeof(struct song_name *));
+    set_node(node3, "Imagine Dragons", "Believer", node2);
+
+    struct song_node *node4;
+    node4 = malloc(sizeof("Ed Sheeran") + sizeof("Shape of You") + sizeof(struct song_name *));
+    set_node(node4, "Ed Sheeran", "Shape of You", node3);
+
+    struct song_node *node5;
+    node5 = malloc(sizeof("Ed Sheeran") + sizeof("Perfect") + sizeof(struct song_name *));
+    set_node(node5, "Ed Sheeran", "Perfect", node4);
+
+    struct song_node *node6;
+    node6 = malloc(sizeof("Charlie Puth") + sizeof("Attention") + sizeof(struct song_name *));
+    set_node(node6, "Charlie Puth", "Attention", node5);
+
+    printf("=~=~=~=[ print_list test ]=~=~=~=\n");
+    print_list(node6);
+
+    printf("==========================================\n");
+    printf("=~=~=~=[ insert_front test ]=~=~=~=\n");
+    printf("Adding [Ariana Grande : Side to Side] to the front...\n\n");
+
+    printf("Updated List:\n");
+    print_list(insert_front("Ariana Grande", "Side to Side", node6));
+
+    printf("==========================================\n");
+    printf("=~=~=~=[ insert_in_order test ]=~=~=~=\n");
+    printf("Adding [Flo Rida : My House] into proper space...\n\n");
+
+    printf("Updated list:\n");
+    print_list(insert_in_order(node6, "Flo Rida", "My House"));
+
+    printf("==========================================\n");
+    printf("=~=~=~=[ list_find_node test ]=~=~=~=\n");
+    list_find_node(node6, "Ed Sheeran", "Galway Girl");
+    list_find_node(node6, "Charlie Puth", "Attention");
+
+    printf("==========================================\n");
+    printf("=~=~=~=[ list_find_artist test ]=~=~=~=\n");
+
+    printf("Searching for Justin Bieber...\n");
+    list_find_artist(node6, "Justin Bieber");
+
+    printf("==========================================\n");
+    printf("=~=~=~=[ get_random test ]=~=~=~=\n");
+
+    printf("Getting random song... ");
+    print_node(get_random(node6));
+    printf("Getting random song... ");
+    print_node(get_random(node6));
+    printf("Getting random song... ");
+    print_node(get_random(node6));
+
+    printf("==========================================\n");
+    printf("=~=~=~=[ remove_node test ]=~=~=~=\n");
+
+    printf("Removing [Imagine Dragons : Believer]...\n\n");
+    remove_node(node6, node3);
+
+    printf("Updated list:\n");
+    print_list(node6);
+
+    printf("==========================================\n");
+    printf("=~=~=~=[ free_list test ]=~=~=~=\n");
+
+    printf("Freeing list...\n\n");
+    free_list(node6);
+
+    printf("Updated list:\n");
+    print_list(node6);
+
+    /*
   struct song_node *temp;
   temp = malloc(sizeof("artist name") + sizeof("song name") + sizeof(struct song_name *));
   struct song_node *temp1;
@@ -52,14 +135,6 @@ int main(){
   print_list(temp01);
   print_list(temp02);
 
-  /*
-  struct song_node *temp02;
-  temp01 = malloc(sizeof(struct song_name *) + sizeof(struct song_name *));
-  struct song_node *temp01 = {"Justin Bieber", "Baby", 0};
-  struct song_node *temp02 = {"Kim Kardash", "Love", 0};
-  temp01 = insert_front(temp01, temp02);
-  print_list(temp01);
-  */
-
   print_list(free_list(temp01));
+  */
 }
