@@ -15,13 +15,11 @@ struct song_node * insert_in_order(char *, char *);
 
 void print_list(struct song_node *);
 
-void print_node(struct song_node *);
+void print_node(struct song_node *); //helper
 
-//struct song_node * find_node(struct song_node *, struct song_node *);
+struct song_node * list_find_node(struct song_node *, char *, char *);
 
-struct song_node * find_node_list(struct song_node *, char *, char *);
-
-struct song_node * find_artist_list(struct song_node *, char *);
+struct song_node * list_find_artist(struct song_node *, char *);
 
 struct song_node * get_random(struct song_node *);
 

@@ -4,7 +4,7 @@
 #include "linked_list.h"
 
 void print_list(struct song_node *start){
-  while (start){
+  while (start) {
     printf("%s : %s | ", start->artist, start->name);
     start = start->next;
   }
