@@ -1,6 +1,8 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
+int find_index(char);
+
 void add_song(struct song_node **, char *, char *);
 
 struct song_node * find(struct song_node **, char *, char *);

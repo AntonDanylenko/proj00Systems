@@ -116,11 +116,11 @@ struct song_node * get_random(struct song_node *node) {
 	return node;
 }
 
-struct song_node * remove_node(struct song_node *start, struct song_node *remove) {
+struct song_node * remove_node(struct song_node *start, char *song_artist, char *song_name) {
     struct song_node *one = start;
     struct song_node *two;
     if (one) {
-        while(remove != one){
+        while(!strcmp(start->artist,song_artist) || !strcmp(start->name,song_name)){
             two = one;
             one = one->next;
         }
