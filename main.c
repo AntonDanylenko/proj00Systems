@@ -204,7 +204,7 @@ int main(){
   printf("==========================================\n");
   printf("====[ find_artist test ]====\n");
 
-  find_artist("Martin Garris");
+  find_artist("Martin Garrix");
 
   find_artist("Lebron James");
 
@@ -218,7 +218,7 @@ int main(){
   printf("==========================================\n");
   printf("====[ remove_song test ]====\n");
 
-  remove_song("Kendrick Lamar", "Humble");
+  remove_song("Chnton D", "Cssool Song");
 
   remove_song("Nial Horan","Slow Hands");
 

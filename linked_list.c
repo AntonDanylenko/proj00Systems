@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "linked_list.h"
 
 struct song_node * insert_front(char *artist, char *name, struct song_node *next) {
@@ -27,6 +28,7 @@ struct song_node * find_first(struct song_node *start, char* artist){
   }
   return NULL;
 }
+
 //helper function
 int song_cmp(struct song_node *first, struct song_node *second){
   int name_cmp = strcmp(first->name, second->name);
@@ -77,22 +79,27 @@ void print_list(struct song_node *start){
 
 //helper
 void print_node(struct song_node *node){
-  printf("%s : %s\n", node->artist, node->name);
+  if(!node){
+    printf("Node is null\n");
+  }
+  else{
+    printf("%s : %s\n", node->artist, node->name);
+  }
 }
 
 struct song_node * list_find_node(struct song_node *start, char *song_artist, char *song_name){
-  printf("looking for [%s: %s]...\n", song_artist, song_name);
+  //printf("looking for [%s: %s]...\n", song_artist, song_name);
   while(start){
     //printf("in while loop\n");
     if(!(strcmp(start->artist,song_artist) || strcmp(start->name,song_name))){
-      printf("Song found! ");
-      print_node(start);
-      printf("\n");
+      //printf("Song found! ");
+      //print_node(start);
+      //printf("\n");
       return start;
     }
     start = start->next;
   }
-  printf("Song not found!\n");
+  //printf("Song not found!\n");
   return NULL;
 }
 
@@ -112,7 +119,7 @@ struct song_node * list_find_artist(struct song_node *node, char *artist) {
 //helper
 int length(struct song_node *node) {
     int result = 0;
-    while (node != NULL) {
+    while (node) {
         result += 1;
         node = node->next;
     }
@@ -120,29 +127,55 @@ int length(struct song_node *node) {
 }
 
 struct song_node * get_random(struct song_node *node) {
-    struct song_node *decoy = node;
-	int chance = ( rand() % length(decoy) );
-	for (int i = 0; i < chance; i++){
+  if(!node){
+    printf("Node is null\n");
+    return NULL;
+  }
+  srand(time(0));
+  struct song_node *decoy = node;
+	int index = ( rand() % length(decoy) );
+	for (int i = 0; i < index; i++){
 		node = node -> next;
 	}
 	return node;
 }
 
-struct song_node * remove_node(struct song_node *start, char *song_artist, char *song_name) {
-    struct song_node *one = start;
-    struct song_node *two;
-    two = malloc(sizeof(start->artist) + sizeof(start->name) + sizeof(struct song_name *));
-    if (one) {
+/*struct song_node * remove_node(struct song_node *start, char *song_artist, char *song_name) {
+    struct song_node *previous = start;
+    struct song_node *current = previous->next;
+    if (previous) {
         while(!strcmp(start->artist,song_artist) || !strcmp(start->name,song_name)){
-            two = one;
-            one = one->next;
+            current = previous;
+            previous = previous->next;
         }
-        if (one == start){
-            start = one->next;
+        if (previous == start){
+            start = previous->next;
         }
-        two->next = one->next;
+        current->next = previous->next;
     }
-    return two;
+    return current;
+}*/
+
+struct song_node * remove_node(struct song_node *start, char *song_artist, char *song_name) {
+  struct song_node *previous = start;
+  struct song_node *current = start->next;
+  if(!(strcmp(previous->artist,song_artist) || strcmp(previous->name,song_name))){
+    start->next = NULL;
+    free(start);
+    return current;
+  }
+  while(current){
+    if(!(strcmp(current->artist,song_artist) || strcmp(current->name,song_name))){
+      previous->next = current->next;
+      current->next = NULL;
+      free(current);
+      return start;
+    }
+    previous = previous->next;
+    current = current->next;
+  }
+  printf("Song not found!\n");
+  return NULL;
 }
 
 /*struct song_node * free_list(struct song_node *start){
@@ -164,6 +197,7 @@ struct song_node * free_list(struct song_node *start){
   while (current){
     struct song_node *next = current->next;
     printf("Freeing %s : %s... \n", current->artist, current->name);
+    current->next = NULL;
     free(current);
     current = next;
   }

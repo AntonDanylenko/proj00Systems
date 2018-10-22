@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "linked_list.h"
 #include "library.h"
 
@@ -8,11 +9,11 @@
 #define LIBRARY_C
 
 int find_index(char *artist){
-  int index = 0;
-  if (artist[0] - 'A' > 25){
+  int index = artist[0] - 'A';
+  if (index > 25){
     index = 26;
   }
-  return artist[0] - 'A';
+  return index;
 }
 
 void add_song(char *artist, char *song){
@@ -47,9 +48,9 @@ void print_letter(char a){
 
 void find(char *artist, char *song){
   int check = find_index(artist);
-  if (list_find_node(table[check],song,artist)){
+  if (list_find_node(table[check],artist,song)){
     printf("Song found! ");
-    print_node(list_find_node(table[check],song,artist));
+    print_node(list_find_node(table[check],artist,song));
     printf("\n");
   }
   else{
@@ -58,8 +59,11 @@ void find(char *artist, char *song){
 }
 
 void find_artist(char *artist){
-  int check = find_index(artist);
-  struct song_node *start = find_first(table[check],artist);
+  int index = find_index(artist);
+  //printf("index: %d\n", index);
+  //print_node(table[index]);
+  struct song_node *start = find_first(table[index],artist);
+  //print_node(start);
   if (start){
     printf("Artist found! ");
     print_list(start);
@@ -71,12 +75,8 @@ void find_artist(char *artist){
 }
 
 void remove_song(char *artist, char *song){
-  int index = artist[0] - 'a';
-  if (index<0 || index>=27){
-    index = 26;
-  }
-  struct song_node *node = table[index];
-  remove_node(node,artist,song);
+  int index = find_index(artist);
+  print_list(remove_node(table[index],artist,song));
 }
 
 void clear_library(){
@@ -87,19 +87,22 @@ void clear_library(){
 
 void print_artist(char *artist){
   printf("printing artist\n");
-  struct song_node *node = list_find_artist(table[artist[0]-'A'], artist);
+  int index = find_index(artist);
+  struct song_node *node = list_find_artist(table[index], artist);
   print_list(node);
 }
 
-void shuffle(struct song_node **library){
-  int a = 0;
-  while (a){
-    int b = rand() % 27;
-    if (get_random(table[b])){
-      print_node(get_random(table[b]));
-      printf("\n");
-      a--;
-    }
+void shuffle(){
+  srand(time(0));
+  int b = rand() % 27;
+  while(!table[b]){
+    //printf("Changing b\n");
+    b = rand() % 27;
+  }
+  //printf("b: %d\n", b);
+  if (get_random(table[b])){
+    print_node(get_random(table[b]));
+    printf("\n");
   }
 }
 
