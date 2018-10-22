@@ -33,14 +33,16 @@ void print_library(){
 
 void print_library_letter(int index){
   if (table[index]){
-    printf("%c \n", 'A' + index);
+    printf("%c \n", (char)index + 'A');
     print_list(table[index]);
   }
 }
 
 void print_letter(char a){
-  printf("%c:", (char)a);
-  print_list(table[a-'A']);
+  if (table[(int)a-'A']){
+    printf("%c \n", a);
+    print_list(table[(int)a-'A']);
+  }
 }
 
 void find(char *artist, char *song){
@@ -84,7 +86,9 @@ void clear_library(){
 }
 
 void print_artist(char *artist){
+  //printf("printing artist");
   struct song_node *node = list_find_artist(node, artist);
+  print_node(node);
   while (node){
     if (!strcmp(node->artist, artist)){
       print_list(node);
