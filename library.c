@@ -86,15 +86,9 @@ void clear_library(){
 }
 
 void print_artist(char *artist){
-  //printf("printing artist");
-  struct song_node *node = list_find_artist(node, artist);
-  print_node(node);
-  while (node){
-    if (!strcmp(node->artist, artist)){
-      print_list(node);
-    }
-  }
-  printf("\n");
+  printf("printing artist\n");
+  struct song_node *node = list_find_artist(table[artist[0]-'A'], artist);
+  print_list(node);
 }
 
 void shuffle(struct song_node **library){

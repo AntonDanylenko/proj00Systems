@@ -157,6 +157,17 @@ int main(){
   add_song("Calvin Harris","Slide");
   add_song("Kendrick Lamar","Humble");
   add_song("Anton D", "Cool Song");
+  add_song("Bnton D", "C2ool Song");
+  add_song("Cnton D", "C1ool Song");
+  add_song("Dnton D", "C3ool Song");
+  add_song("Enton D", "Coo2l Song");
+  add_song("Fnton D", "C4ool Song");
+  add_song("Gnton D", "Codeol Song");
+  add_song("Bbnton D", "Codol Song");
+  add_song("Znton D", "Czzzzool Song");
+  add_song("Chnton D", "Cssool Song");
+  add_song("Anton D", "Cooler Song");
+  add_song("Sam Hunt", "Not Cool Song");
 
   print_library();
 
@@ -167,7 +178,7 @@ int main(){
 
   print_letter('N');
 
-  print_letter("H");
+  print_letter('H');
 
   printf("==========================================\n");
   printf("====[ print_artist test ]====\n");
